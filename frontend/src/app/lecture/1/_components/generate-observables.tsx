@@ -4,6 +4,10 @@ import { Observable, from, fromEvent, generate, interval, of, range, timer } fro
 import { AjaxResponse, ajax } from 'rxjs/ajax';
 
 export function GenerateObservables() {
+  const [isDocumentExsist, setIsDocumentExsist] = useState(false);
+
+  useEffect(() => setIsDocumentExsist(true), []);
+
   return (
     <>
       {/* 배열 스트림 */}
@@ -36,11 +40,15 @@ export function GenerateObservables() {
       />
 
       {/* 이벤트 스트림 */}
-      <EventObservableComponent
-        obs={fromEvent(document, 'click')}
-        lable="fromEvent(document, 'click')로 생성하기"
-        description={`DOM 이벤트로 스트림 생성`}
-      />
+      {isDocumentExsist ? (
+        <EventObservableComponent
+          obs={fromEvent(document, 'click')}
+          lable="fromEvent(document, 'click')로 생성하기"
+          description={`DOM 이벤트로 스트림 생성`}
+        />
+      ) : (
+        ''
+      )}
 
       {/* Ajax 스트림 */}
       <AjaxObservableComponent
