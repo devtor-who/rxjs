@@ -42,8 +42,8 @@ export function GenerateObservables() {
       {/* 이벤트 스트림 */}
       {isDocumentExsist ? (
         <EventObservableComponent
-          obs={fromEvent(document, 'click')}
-          lable="fromEvent(document, 'click')로 생성하기"
+          obs={fromEvent(document, 'keypress')}
+          lable="fromEvent(document, 'keypress')로 생성하기"
           description={`DOM 이벤트로 스트림 생성`}
         />
       ) : (
